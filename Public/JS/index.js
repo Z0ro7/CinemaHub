@@ -14,10 +14,24 @@ async function moviePopular(){
     let jsonData = await moviesPop.json()
     return jsonData;
 };
+
 async function displayMoviePopular(){
     let moviesList = await moviePopular()
-    for (let i = 0; i < moviesList.results.lenght; i++){
-        let movieHTML = document.createElement('li')
-        movieHTML.innerHTML = ``
+    let results = moviesList.results
+    for (let i = 0; i < results.length; i++){
+        let movieHTML = document.createElement('div')
+        movieHTML.innerHTML = `
+        <h2>${results[i].title}</h2>
+        <img src=https://image.tmdb.org/t/p/w500${results[i].poster_path} alt="poster du film"/>
+        <h3>${results[i].release_date}<h3>
+        `
+        movieHTML.addEventListener('click',function() {
+            window.location.href=`movie.html?${results[i].id}`;
+        })
+        let filmAffiche = document.getElementById('filmFilm')
+        filmAffiche.appendChild(movieHTML)
     }
 }
+displayMoviePopular()
+
+//Kiss kiss kévin et kambiz

@@ -13,6 +13,10 @@ a {
     display: none;
 }
 
+h2,h3 {
+    color: #fff;
+}
+
 #buttonConnect{
     display: flex;
 }
