@@ -1,0 +1,39 @@
+section{
+    display: flex;
+    justify-content: space-evenly;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+#buttonDeconnexion{
+    display: none;
+}
+
+#buttonConnect{
+    display: flex;
+}
+
+button {
+    display: flex;
+    font-size: 1rem;
+    padding: 0.8em 2em;
+    background-color: #000;
+    border: 3px solid rgb(255, 163, 26);
+    border-radius: 1em;
+    color: #fff;
+    font-weight: bolder;
+    box-shadow: -5px 5px 0px 0px rgb(255, 163, 26);
+  }
+input, #searchbar{
+    width: 400px;
+    font-size: 1rem;
+    padding: 0.8em 2em;
+    background-color: #000;
+    border: 3px solid rgb(255, 163, 26);
+    border-radius: 1em;
+    color: #fff;
+    font-weight: bolder;
+    box-shadow: -5px 5px 0px 0px rgb(255, 163, 26);
+    text-decoration: none;
+}
