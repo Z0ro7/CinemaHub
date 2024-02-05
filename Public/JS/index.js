@@ -23,7 +23,7 @@ async function displayMoviePopular(){
         movieHTML.innerHTML = `
         <h2>${results[i].title}</h2>
         <img src=https://image.tmdb.org/t/p/w500${results[i].poster_path} alt="poster du film"/>
-        <h3>${results[i].release_date}<h3>
+        <p>${results[i].release_date}</p>
         `
         movieHTML.addEventListener('click',function() {
             window.location.href=`movie.html?${results[i].id}`;

@@ -22,7 +22,7 @@ async function displayMovieSelected(id){
     movieHTML.innerHTML = `
     <h2>${moviesInfos.title}</h2>
     <img src=https://image.tmdb.org/t/p/w500${moviesInfos.poster_path} alt="poster du film"/>
-    <h3>${moviesInfos.overview}<h3>
+    <p>${moviesInfos.overview}</p>
     `
     let filmAffiche = document.getElementById('infoFilm')
     filmAffiche.appendChild(movieHTML)
