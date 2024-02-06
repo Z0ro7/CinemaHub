@@ -1,9 +1,12 @@
 body{
     background-color: #000;
 }
-section{
+section, #navbar, button{
     display: flex;
     justify-content: space-evenly;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
 }
 a {
     text-decoration: none;
@@ -43,4 +46,10 @@ input, #searchbar{
     font-weight: bolder;
     box-shadow: -5px 5px 0px 0px rgb(255, 163, 26);
     text-decoration: none;
+}
+header, #logo{
+    display: flex;
+    height: 50px;
+    top: 10px;
+    left: 5px;
 }
