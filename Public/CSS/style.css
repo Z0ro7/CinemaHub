@@ -12,6 +12,9 @@ a {
     text-decoration: none;
     color: #fff;
 }
+#buttonConnect{
+    display: flex;
+}
 #buttonDeconnexion{
     display: none;
 }

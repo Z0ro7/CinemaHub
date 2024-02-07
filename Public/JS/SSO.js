@@ -13,11 +13,11 @@ window.onload = async () => {
         .then(sessionData => {
             sessionStorage.setItem('tmdbSessionId', sessionData.session_id)
             sessionStorage.setItem('tmdbSessionToken', token)
-            location.href = 'http://127.0.0.1:5500/Public/index.html' //reload dans la barre de navigation
+            location.href = 'http://127.0.0.1:5500/CinemaHub/Public/index.html' //reload dans la barre de navigation
         })
         .catch(err => {
             console.error(err);
-            location.href = 'http://127.0.0.1:5500/Public/index.html'
+            location.href = 'http://127.0.0.1:5500/CinemaHub/Public/index.html'
         })
     }
 
@@ -34,7 +34,7 @@ async function redirectUserToSSO() {
     if (!tokenData.success) {
         return alert('Une erreur est survenue et je ne peux pas vous identifier')
     }
-    location.href = `https://www.themoviedb.org/authenticate/${tokenData.request_token}?redirect_to=http://127.0.0.1:5500/Public/index.html`
+    location.href = `https://www.themoviedb.org/authenticate/${tokenData.request_token}?redirect_to=http://127.0.0.1:5500/CinemaHub/Public/index.html`
 }
 
 // Cette fonction fait une requete a tmdb pour obtenir  un token vierge a faire valider par le user
@@ -83,14 +83,32 @@ let redirButton = document.getElementById('buttonConnect');
 redirButton.addEventListener('click', () => redirectUserToSSO());
 
 function deleteSession() {
-    sessionStorage.removeItem('tmdbSessionId')
-    sessionStorage.removeItem('tmdbSessionToken')
-    document.getElementById('buttonConnect').style.display='block';
-    document.getElementById('buttonDeconnect').style.display='none';    
+    sessionStorage.removeItem('tmdbSessionId');
+    sessionStorage.removeItem('tmdbSessionToken');
+    showConnect();
+}
+
+function checkIfUserIsLoggedIn() {
+    if (sessionStorage.getItem('tmdbSessionId')) {
+        hideConnect();
+    } else {
+        showConnect();
+    }
+}
+
+function showConnect() {
+    document.getElementById('buttonConnect').style.display = 'block';
+    document.getElementById('buttonDeconnect').style.display = 'none';
+    document.getElementById('account').style.display = 'none';
 }
 
 function hideConnect() {
-    document.getElementById('buttonConnect').style.display='none';
-    document.getElementById('buttonDeconnect').style.display='block';   
-
+    document.getElementById('buttonConnect').style.display = 'none';
+    document.getElementById('buttonDeconnect').style.display = 'block';
+    document.getElementById('account').style.display = 'block';
 }
+
+let disconnectButton = document.getElementById('buttonDeconnect');
+disconnectButton.addEventListener('click', () => deleteSession());
+
+checkIfUserIsLoggedIn();
