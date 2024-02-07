@@ -37,3 +37,4 @@ displayMovieSearched()
 
 const userSearch = document.getElementById('searchBarre')
 userSearch.addEventListener('input', () => displayMovieSearched(userSearch.value))
+
