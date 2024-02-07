@@ -93,5 +93,4 @@ function hideConnect() {
     document.getElementById('buttonConnect').style.display='none';
     document.getElementById('buttonDeconnect').style.display='block';   
 
-
 }

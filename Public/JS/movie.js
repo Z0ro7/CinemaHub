@@ -28,3 +28,36 @@ async function displayMovieSelected(id){
     filmAffiche.appendChild(movieHTML)
 }
 displayMovieSelected(id)
+
+async function comments(id){
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZjkzMWY4Yjc0OTc2ODdjNTBlNGM5NjU0N2Q1ZjJlMSIsInN1YiI6IjY1YjIzOGYzMjg2NmZhMDE2MmUzYTJmYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.40I583sC_neSeUiJWOfn_b6m_bDPMOKnrGZkWCQt4zU'
+        }
+    };
+    let commentsView = await fetch('https://api.themoviedb.org/3/movie/'+id+'/reviews?language=fr-FR&page=1', options).catch(err => console.error(err)).catch(err => console.error(err))
+    if(!commentsView){
+        return
+    }
+    let jsonDataCom = await commentsView.json()
+    return jsonDataCom;
+};
+
+async function displayCommentsMovies(id){
+    let commentsInfos = await comments(id)
+    let results = commentsInfos.results
+    console.log("lancetamere")
+    for (let i = 0; i < results.length; i++){
+        console.log("cac")
+        let commentsHTML = document.createElement('div')
+        commentsHTML.innerHTML = `
+        <h2>${results[i].author}</h2>
+        <p>${results[i].content}</p>
+        `
+        let commentsAffiche = document.getElementById('commentairesFilm')
+        commentsAffiche.appendChild(commentsHTML)
+    }
+}
+displayCommentsMovies(id)
