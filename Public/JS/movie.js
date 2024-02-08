@@ -47,10 +47,7 @@ async function comments(id){
 
 async function displayCommentsMovies(id){
     let commentsInfos = await comments(id)
-    console.log(commentsInfos)
-    console.log("lancetamere")
     commentsInfos.results.forEach((element) => {
-        console.log("caca")
         let commentsHTML = document.createElement('div')
         commentsHTML.innerHTML = `
         <h2>${element.author}</h2>
